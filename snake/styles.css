@@ -1,0 +1,21 @@
+.gameArea {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom button {
+    margin-top: 3em;
+    max-width: fit-content;
+}
+
+h1 {
+    text-align: center;
+}

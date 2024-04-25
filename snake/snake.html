@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Vale Games</title>
+        <script src="snake.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Snake</h1>
+        </header>
+        <main>
+            <div class="gameArea">
+                <canvas id="snakeCanvas" width="750" height="750"></canvas>
+            </div>
+            <div class="bottom">
+                <button onclick="startSnake()">Play</button>
+                <p>
+                    description!
+                </p>
+            </div>
+            <div id="loseScreen" style="display: none;">
+                <h3>You Lose!</h3>
+                <button class="snake">Retry</button>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>

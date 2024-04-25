@@ -1,0 +1,26 @@
+canvas {
+}
+
+button {
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.selections {
+    display: flex;
+    /* align-content: space-between; */
+    justify-content: space-evenly;
+}
+
+.gameSelection {
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+.gameStage {
+    display: flex;
+    justify-content: center;
+}

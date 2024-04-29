@@ -1,0 +1,79 @@
+body {
+    background-image: url("jung.png");
+    font-family: "Gill Sans", sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+.gameArea {
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    outline: darkolivegreen 2px solid;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom button {
+    margin-top: 1em;
+    max-width: fit-content;
+}
+
+header {
+    margin-top: 1em;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center; /* Center items vertically */
+    /* align-content: space-around; */
+    width: 100%;
+    height: 100px; 
+}
+
+.topBar {
+    width: 222px;
+}
+
+h1 {
+    text-align: center;
+    /* margin-left: 5em; */
+    background-color: rgb(85, 107, 47, 0.75);
+    border-radius: 1em;
+    max-width: 50%; 
+    height: 1em;
+    width: 1000px;
+}
+
+button {
+    font-size: 16px;
+    background-color: darkolivegreen;
+    color: antiquewhite;
+    padding: 12px 30px;
+    border-radius: 10%;
+}
+
+img {
+    width: 222px;
+}
+
+@media (max-width: 1500px) {
+    canvas {
+        width: 750px;
+        height: 750px;
+    }
+}
+
+@media (max-width: 850px) {
+    canvas {
+        width: 500px;
+        height: 500px;
+    }
+}

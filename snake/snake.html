@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="snake.css">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <title>Vale Games</title>
@@ -9,21 +9,20 @@
     </head>
     <body>
         <header>
-            <h1>Snake</h1>
+            <a class="topBar" href="../index.html">
+                <img id="backarrow" src="../Untitled presentation.png" alt="awesome arrow pointing left and can be clicked to take bakc to main menu">
+            </a>
+            <div class="topBar"></div>
+            <h1 class="topBar">Snake</h1>
+            <div class="topBar"></div>
+            <div class="topBar"></div>
         </header>
         <main>
             <div class="gameArea">
-                <canvas id="snakeCanvas" width="750" height="750"></canvas>
+                <canvas id="snakeCanvas" width="900" height="900"></canvas>
             </div>
             <div class="bottom">
                 <button onclick="startSnake()">Play</button>
-                <p>
-                    description!
-                </p>
-            </div>
-            <div id="loseScreen" style="display: none;">
-                <h3>You Lose!</h3>
-                <button class="snake">Retry</button>
             </div>
         </main>
         <footer>

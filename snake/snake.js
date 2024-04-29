@@ -1,19 +1,14 @@
-let snakeArray = [[]];
+"use stict";
+
+let snakeArray = [];
 let snakeHeadSize = 10;
 let snakeHead;
 let snakeSpeed = 10;
 let snakeDirection = "right";
+let canMove = true;
 
 let canvas;
 let ctx;
-
-document.addEventListener("DOMContentLoaded", function () {
-    canvas = document.getElementById("snakeCanvas");
-    ctx = canvas.getContext("2d");
-
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-});
 
 let eaten = false;
 let foodX = 600;
@@ -22,41 +17,45 @@ let foodY = 500;
 let gameInterval;
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Initial blank canvas
+    canvas = document.getElementById("snakeCanvas");
+    ctx = canvas.getContext("2d");
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Keyboard input listener
     document.body.addEventListener("keydown", pressDown);
     
-    // const startButton = document.getElementById("snake");
-    // startButton.addEventListener("click", function() {
-    //     startSnake();
-    // });
-
+    // Start game button listener
     const startButtons = document.querySelectorAll(".snake");
     startButtons.forEach((button) => { button.addEventListener("click", startSnake) });
 });
  
-// player input function
+// Player input function
 function pressDown(keypress) {
-    if (keypress.keyCode == 83) {
+    console.log("keycode:", keypress.keyCode);
+    if ((keypress.keyCode == 83 || keypress.keyCode == 40) && snakeDirection !== "up" && canMove) {
         snakeDirection = "down";
     }
-    else if (keypress.keyCode == 87) {
+    else if ((keypress.keyCode == 87 || keypress.keyCode == 38) && snakeDirection !== "down" && canMove) {
         snakeDirection = "up";
     }
-    else if (keypress.keyCode == 65) {
+    else if ((keypress.keyCode == 65 || keypress.keyCode == 37) && snakeDirection !== "right" && canMove) {
         snakeDirection = "left";
     }
-    else if (keypress.keyCode == 68) {
+    else if ((keypress.keyCode == 68 || keypress.keyCode == 39) && snakeDirection !== "left" && canMove) {
         snakeDirection = "right";
     }
     else if (keypress.keyCode == 27) {
         snakeSpeed = snakeSpeed > 0 ? clearInterval(gameInterval) : setInterval(drawGame, 45);
     }
+
+    canMove = false; // limit direction input to avoid self collision bug
 }
 
 function startSnake() {
     // clear out all old stuff
-    snakeArray = [[]];
-    var x = document.getElementById("loseScreen");
-    x.style.display = "none";
+    snakeArray = [];
     clearInterval(gameInterval);
     clearScreen();
 
@@ -72,15 +71,31 @@ function startSnake() {
 
 function drawGame() {
     clearScreen();
-    snakeController();
+    snakeController(); // snake logic here
     drawFood();
-    wallCollision();
-    ctx.fillStyle = "grey";
-    snakeArray.forEach((block) => ctx.fillRect(block[0], block[1], snakeHeadSize, snakeHeadSize));
+    drawSnake();
+}
+
+function drawSnake() {
+    let patterPosition;
+    for(let i = 0; i < snakeArray.length; i++) {
+        patterPosition = i % 5;
+        if (patterPosition == 0 || patterPosition == 1) {
+            ctx.fillStyle = "DarkOliveGreen";
+        }
+        else if (patterPosition == 2 || patterPosition == 4) {
+            ctx.fillStyle = "IndianRed";
+        }
+        else {
+            ctx.fillStyle = "Indigo";
+        }
+        
+        ctx.fillRect(snakeArray[i][0], snakeArray[i][1], snakeHeadSize, snakeHeadSize);
+    }
 }
 
 function eatFood() {
-    if (snakeHead[0] == foodX && snakeHead[1] == foodY) {
+    if (snakeHead[0] === foodX && snakeHead[1] === foodY) {
         grow();
         grow();
         grow();
@@ -98,7 +113,7 @@ function drawFood() {
         foodY = Math.round(Math.random() * (canvas.height / snakeHeadSize)) * snakeHeadSize;
         eaten = false;
     }
-
+    
     ctx.fillStyle = "red";
     ctx.fillRect(foodX, foodY, snakeHeadSize, snakeHeadSize); 
 }
@@ -111,39 +126,38 @@ function selfCollision() {
 }
 
 function wallCollision() {
+    // 4 walls 4 conditions...
     if (snakeHead[0] < 0) {
         snakeHead[0] = 0;
-        console.log("You Lose!!");
         loseGame();
     }
-    if (snakeHead[0] + snakeHeadSize > 1000) {
-        snakeHead[0] = 1000 - snakeHeadSize;
-        console.log("You Lose!!");
+    if (snakeHead[0] + snakeHeadSize > canvas.width) {
+        snakeHead[0] = canvas.width - snakeHeadSize;
         loseGame();
     }
     if (snakeHead[1] < 0) {
         snakeHead[1] = 0;
-        console.log("You Lose!!");
         loseGame();
     }
-    if (snakeHead[1] + snakeHeadSize > 750) {
-        snakeHead[1] = 750 - snakeHeadSize;
-        console.log("You Lose!!");
+    if (snakeHead[1] + snakeHeadSize > canvas.width) {
+        snakeHead[1] = canvas.width - snakeHeadSize;
         loseGame();
     }
 }
 
 function dragBody() {
     snakeArray.pop(); // pop off the last piece of the tail
-
-    /* [... ] is so that we don't add the reference to snakeHead
-        instead a new copy is made so that the value persists. */
+    
+    /* `[...snakeHead]` is so that we don't add the reference to snakeHead
+    instead a new copy is made so that the value persists. */
     snakeArray.unshift([...snakeHead]);
 }
 
+// Apply position translation to snake head
 function snakeController() {
+    console.log(snakeDirection);
     if (snakeDirection === "down") {
-        // calc and lock in x pos
+        // calc and lock in x pos (snakeHead[0]) by rounding
         snakeHead[0] = Math.round(snakeHead[0] / snakeHeadSize) * snakeHeadSize;
         snakeHead[1] += snakeSpeed;
     }
@@ -152,6 +166,7 @@ function snakeController() {
         snakeHead[1] -= snakeSpeed;
     }
     else if (snakeDirection === "left") {
+        // calc and lock in y pos (snakeHead[1]) by rounding
         snakeHead[1] = Math.round(snakeHead[1] / snakeHeadSize) * snakeHeadSize;
         snakeHead[0] -= snakeSpeed;
     }
@@ -159,20 +174,22 @@ function snakeController() {
         snakeHead[1] = Math.round(snakeHead[1] / snakeHeadSize) * snakeHeadSize;
         snakeHead[0] += snakeSpeed;
     }
+
+    canMove = true;
     
-    selfCollision();
-    eatFood();
+    wallCollision();
+    selfCollision();    // check to see if head hit the body
+    eatFood();          // check to see if head hit some food
     dragBody();
 }
 
 function loseGame() {
+    alert("You Lose\n" + "Score: " + snakeArray.length);
+    document.location.reload();
     clearInterval(gameInterval);
-    var x = document.getElementById("loseScreen");
-    x.style.display = "block";
-    // x.style.display = "none";
 }
 
 function clearScreen() {
     ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, 750, 750);
+    ctx.fillRect(0, 0, canvas.width, canvas.width);
 }

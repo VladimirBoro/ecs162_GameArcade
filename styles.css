@@ -1,12 +1,28 @@
-canvas {
+button {
+    font-size: 16px;
+    background-color: darkolivegreen;
+    color: antiquewhite;
+    padding: 12px 30px;
+    margin-top: 2em;
+    border-radius: 10%;
 }
 
-button {
-
+body {
+    background-image: url("mainBackground.png");
+    font-family: "Gill Sans", sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1 {
     text-align: center;
+    background-color: rgba(10, 87, 33, 0.397);
+}
+
+h2 {
+    background-color: rgb(85, 107, 47, 0.75);
+    border-radius: 1em;
 }
 
 .selections {
@@ -15,12 +31,29 @@ h1 {
     justify-content: space-evenly;
 }
 
+img {
+    width: 300px;
+    border-radius: 1em;
+}
+
 .gameSelection {
     margin-bottom: 2em;
-    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .gameStage {
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .selections { 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center;
+    }
+        
 }

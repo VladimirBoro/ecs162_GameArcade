@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const pongButton = document.getElementById("pong");
     pongButton.addEventListener("click", function() {window.location.href = "pong/pong.html";});
     // pongButtons.forEach((button) => { 
-    //     button.addEventListener("click", function() {window.location.href = "pong/index.html";}); 
-    // });
+        //     button.addEventListener("click", function() {window.location.href = "pong/index.html";}); 
+        // });
+
+    const mazeButton = document.getElementById("maze");
+    mazeButton.addEventListener("click", function() {window.location.href = "maze/maze.html";});
 });

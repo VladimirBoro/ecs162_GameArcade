@@ -64,16 +64,23 @@ img {
     width: 222px;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 3000px) {
     canvas {
         width: 750px;
         height: 750px;
     }
 }
 
+@media (max-width: 2000px) {
+    canvas {
+        width: 520px;
+        height: 520px;
+    }
+}
+
 @media (max-width: 850px) {
     canvas {
-        width: 500px;
-        height: 500px;
+        width: 400px;
+        height: 400px;
     }
 }

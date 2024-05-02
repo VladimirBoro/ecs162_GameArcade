@@ -10,7 +10,7 @@ let canMove = true;
 let canvas;
 let ctx;
 
-let eaten = false;
+let eaten = true;
 let foodX = 600;
 let foodY = 500;
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
  
 // Player input function
 function pressDown(keypress) {
-    console.log("keycode:", keypress.keyCode);
+    // console.log("keycode:", keypress.keyCode);
     if ((keypress.keyCode == 83 || keypress.keyCode == 40) && snakeDirection !== "up" && canMove) {
         snakeDirection = "down";
     }
@@ -111,9 +111,11 @@ function drawFood() {
     if (eaten) {
         foodX = Math.round(Math.random() * (canvas.width / snakeHeadSize)) * snakeHeadSize;
         foodY = Math.round(Math.random() * (canvas.height / snakeHeadSize)) * snakeHeadSize;
+        console.log(foodX, foodY);
         eaten = false;
     }
     
+    // console.log(canvas.width, canvas.height);
     ctx.fillStyle = "red";
     ctx.fillRect(foodX, foodY, snakeHeadSize, snakeHeadSize); 
 }
@@ -155,7 +157,7 @@ function dragBody() {
 
 // Apply position translation to snake head
 function snakeController() {
-    console.log(snakeDirection);
+    // console.log(snakeDirection);
     if (snakeDirection === "down") {
         // calc and lock in x pos (snakeHead[0]) by rounding
         snakeHead[0] = Math.round(snakeHead[0] / snakeHeadSize) * snakeHeadSize;

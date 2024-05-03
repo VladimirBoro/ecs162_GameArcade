@@ -44,12 +44,9 @@ header {
 
 h1 {
     text-align: center;
-    /* margin-left: 5em; */
-    background-color: rgb(85, 107, 47, 0.75);
+    background: radial-gradient(circle, rgb(85, 107, 47), rgb(146, 160, 130));
     border-radius: 1em;
-    max-width: 50%; 
     height: 1em;
-    width: 1000px;
 }
 
 button {
@@ -64,23 +61,30 @@ img {
     width: 222px;
 }
 
-@media (max-width: 3000px) {
-    canvas {
-        width: 750px;
-        height: 750px;
-    }
+@media (min-width: 0px) {
+    canvas { width: 450px; height: 450px; }
+}
+ 
+@media (min-width: 750px) {
+     canvas { width: 480px; height: 480px; }
 }
 
-@media (max-width: 2000px) {
-    canvas {
-        width: 520px;
-        height: 520px;
-    }
+@media (min-width: 900px) {
+    canvas { width: 550px; height: 550px; }
 }
 
-@media (max-width: 850px) {
-    canvas {
-        width: 400px;
-        height: 400px;
-    }
+@media (min-width: 1200px) {
+    canvas { width: 650px; height: 650px; }
+}
+
+@media (min-width: 1500px) {
+    canvas { width: 750px; height: 750px; }
+}
+
+@media (min-width: 2000px) {
+    canvas { width: 850px; height: 850px; }
+}
+
+@media (min-width: 3000px) {
+    canvas { width: 950px; height: 950px; }
 }

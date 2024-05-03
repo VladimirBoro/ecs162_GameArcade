@@ -54,6 +54,10 @@ function pressDown(keypress) {
 }
 
 function startSnake() {
+    // alert the controls
+    alert("CONTROLS:\nUp: W or Up Arrow\nDown: S or Down Arrow \nLeft: A or Left Arrow \nRight: D or Right Arrow");
+
+
     // clear out all old stuff
     snakeArray = [];
     clearInterval(gameInterval);
@@ -109,8 +113,8 @@ function grow() {
 
 function drawFood() {
     if (eaten) {
-        foodX = Math.round(Math.random() * (canvas.width / snakeHeadSize)) * snakeHeadSize;
-        foodY = Math.round(Math.random() * (canvas.height / snakeHeadSize)) * snakeHeadSize;
+        foodX = Math.round(Math.random() * (canvas.width / snakeHeadSize)) * snakeHeadSize - 10;
+        foodY = Math.round(Math.random() * (canvas.height / snakeHeadSize)) * snakeHeadSize - 10;
         console.log(foodX, foodY);
         eaten = false;
     }

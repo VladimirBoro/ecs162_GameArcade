@@ -9,10 +9,11 @@ const Card = {
     FIVE: 5,
     SIX: 6,
     SEVEN: 7,
-  };
+};
 
 const CARD_BACK = "radial-gradient(circle, rgb(34, 33, 33), rgb(0, 0, 0))";
 
+let startTime;
 let lives = 5;
 let choice1Index = -1;
 let choice1;
@@ -84,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
             choice1Index = -1;
             choice1 = null;
         }
-        
     });
 });
 
 
 // initialize game for start
 function startGame() {
+    startTime = Date.now();
     foundCards = new Set();
     gameRunning = true;
     deck = [0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7];    
@@ -130,14 +131,14 @@ function hideCards(card1, card2) {
 
 function checkForloss() {
     if (lives <= 0) {
-        alert("You messed up 5 times... You Lose!");
+        alert(`You messed up 5 times... You Lose!\n Time Took: ${Math.floor((Date.now() - startTime)) / 1000}s`);
         location.reload();
     }
 }
 
 function checkForWin() {
     if (foundCards.size === deck.length) {
-        alert("Congratulations! You Win!");
+        alert(`Congratulations! You Win!\n Time Took: ${Math.floor((Date.now() - start)) / 1000}`);
         location.reload();
     }
 }

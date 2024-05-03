@@ -54,10 +54,6 @@ img {
     canvas { width: 530px; height: 530px; }
 }
 
-/* @media (min-width: 1300px) {
-    canvas { width: 600px; height: 600px; }
-} */
-
 @media (min-width: 1600px) {
     canvas { width: 750px; height: 750px; }
 }

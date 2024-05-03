@@ -46,9 +46,6 @@ function pressDown(keypress) {
     else if ((keypress.keyCode == 68 || keypress.keyCode == 39) && snakeDirection !== "left" && canMove) {
         snakeDirection = "right";
     }
-    else if (keypress.keyCode == 27) {
-        snakeSpeed = snakeSpeed > 0 ? clearInterval(gameInterval) : setInterval(drawGame, 45);
-    }
 
     canMove = false; // limit direction input to avoid self collision bug
 }
@@ -76,6 +73,7 @@ function startSnake() {
 function drawGame() {
     clearScreen();
     snakeController(); // snake logic here
+    wallCollision();
     drawFood();
     drawSnake();
 }
@@ -119,7 +117,6 @@ function drawFood() {
         eaten = false;
     }
     
-    // console.log(canvas.width, canvas.height);
     ctx.fillStyle = "red";
     ctx.fillRect(foodX, foodY, snakeHeadSize, snakeHeadSize); 
 }
@@ -137,15 +134,15 @@ function wallCollision() {
         snakeHead[0] = 0;
         loseGame();
     }
-    if (snakeHead[0] + snakeHeadSize > canvas.width) {
+    else if (snakeHead[0] + snakeHeadSize > canvas.width) {
         snakeHead[0] = canvas.width - snakeHeadSize;
         loseGame();
     }
-    if (snakeHead[1] < 0) {
+    else if (snakeHead[1] < 0) {
         snakeHead[1] = 0;
         loseGame();
     }
-    if (snakeHead[1] + snakeHeadSize > canvas.width) {
+    else if (snakeHead[1] + snakeHeadSize > canvas.width) {
         snakeHead[1] = canvas.width - snakeHeadSize;
         loseGame();
     }
@@ -161,7 +158,6 @@ function dragBody() {
 
 // Apply position translation to snake head
 function snakeController() {
-    // console.log(snakeDirection);
     if (snakeDirection === "down") {
         // calc and lock in x pos (snakeHead[0]) by rounding
         snakeHead[0] = Math.round(snakeHead[0] / snakeHeadSize) * snakeHeadSize;
@@ -183,16 +179,15 @@ function snakeController() {
 
     canMove = true;
     
-    wallCollision();
     selfCollision();    // check to see if head hit the body
     eatFood();          // check to see if head hit some food
     dragBody();
 }
 
 function loseGame() {
+    clearInterval(gameInterval);
     alert("You Lose\n" + "Score: " + snakeArray.length);
     document.location.reload();
-    clearInterval(gameInterval);
 }
 
 function clearScreen() {

@@ -10,8 +10,6 @@ body {
 header {
     display: flex;
     justify-content: center;
-    /* background: linear-gradient(45deg, rgba(39, 62, 88, 0.514), rgba(219, 120, 7, 0.39)); */
-    /* border-radius: 1em; */
 }
 
 footer {

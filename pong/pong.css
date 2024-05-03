@@ -21,6 +21,7 @@ button {
   color: antiquewhite;
   padding: 12px 30px;
   border-radius: 10%;
+  margin-top: 0;
 }
 
 h1 { background: radial-gradient(circle, rgb(70, 47, 107), rgb(11, 2, 90)); }
@@ -49,16 +50,17 @@ p {
 }
 
 #modeSelections {
-  margin-top: 0.5em;
+  /* margin-top: 0.5em; */
+  height: 50px;
 }
 
 #twoplayer {
-  margin: 2em 1em 0 1em;
-  height: 46px;
-}
+  /* margin: 2em 1em 0 1em; */
+  /* height: 46px; */
+} 
 
 #controls, #backArrow {
-  padding-top: 4em;
+  padding-top: 5em;
 }
 
 @media screen and (min-width: 0px) {

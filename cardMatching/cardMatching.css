@@ -1,6 +1,6 @@
 body {
     background-image: url("jungrain.png");
-    overflow: hidden;
+    overflow: visible;
 }
 
 header { justify-content: space-between; }
@@ -25,6 +25,9 @@ header { justify-content: space-between; }
     vertical-align: middle;
     width: auto;
     height: auto;
+    padding: 0 1em;
+    margin: 0 0 5px 0;
+    /* margin-bottom: 5px; */
 }
 
 .card {
@@ -47,43 +50,45 @@ header { justify-content: space-between; }
 }
 
 .topBar {
-    width: 230px;
+    width: 220px;
 }
 
 h1 {
-    text-align: center;
-    background: radial-gradient(circle, rgb(85, 107, 47), rgb(146, 160, 130));
-    border-radius: 1em;
-    height: 1em;
-    padding: 0 1em 0 1em;
+    /* text-align: center; */
+    /* background: radial-gradient(circle, rgb(85, 107, 47), rgb(146, 160, 130)); */
+    /* border-radius: 1em; */
+    /* height: 1em; */
+    /* padding: 0 1em 0 1em; */
 }
 
-button {
+/* button {
     font-size: 16px;
     background-color: darkolivegreen;
     color: antiquewhite;
     padding: 12px 30px;
     border-radius: 10%;
-}
+} */
 
 img {
     width: 222px;
 }
 
 @media (min-width: 0px) {
+    h1 { height: 2.5em;}
     footer { position: absolute; }
-    #gameArea    { width: 480px; height: 500px; margin: 0 auto; }
-    .card { width: 50px; height: 100px; }
+    #gameArea    { width: 480px; height: 420px; margin: 0 auto; }
+    .card { width: 40px; height: 60px; }
 }
   
 @media (min-width: 1000px) {
-    #gameArea    { width: 640px; height: 540px; }
-    .card { width: 50px; height: 120px; }
+    h1 { height: 1em;}
+    #gameArea    { width: 600px; height: 450px; }
+    .card { width: 50px; height: 80px; }
 }
   
 @media (min-width: 1500px) {
     #gameArea    { width: 800px; height: 600px; }
-    .card { width: 60px; height: 140px; }
+    .card { width: 60px; height: 120px; }
 }
   
 @media (min-width: 1650px) {

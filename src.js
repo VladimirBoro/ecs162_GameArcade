@@ -10,6 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         //     button.addEventListener("click", function() {window.location.href = "pong/index.html";}); 
         // });
 
-    const mazeButton = document.getElementById("maze");
-    mazeButton.addEventListener("click", function() {window.location.href = "maze/maze.html";});
+    const mazeButton = document.getElementById("cardMatching");
+    mazeButton.addEventListener("click", function() {window.location.href = "cardMatching/cardMatching.html";});
 });

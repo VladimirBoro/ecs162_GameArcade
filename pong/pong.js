@@ -167,8 +167,8 @@ Pong = {
   onClickStart: function(button) {
     let targetId = button.id;
     switch (targetId) {
-      case "1player": this.startSinglePlayer();  break;
-      case "2player": this.startDoublePlayer();  break;
+      case "oneplayer": this.startSinglePlayer();  break;
+      case "twoplayer": this.startDoublePlayer();  break;
       case "bots": this.startDemo();  break;
     }
   },

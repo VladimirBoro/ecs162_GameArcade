@@ -138,7 +138,7 @@ function checkForloss() {
 
 function checkForWin() {
     if (foundCards.size === deck.length) {
-        alert(`Congratulations! You Win!\n Time Took: ${Math.floor((Date.now() - start)) / 1000}`);
+        alert(`Congratulations! You Win!\n Time Took: ${Math.floor((Date.now() - startTime)) / 1000}`);
         location.reload();
     }
 }

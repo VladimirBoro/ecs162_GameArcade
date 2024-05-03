@@ -1,40 +1,14 @@
-/* body { background-color: black; color: #ffffff; font-size: 12pt; padding: 1em; } */
 body {
   background-image: url("images/jungnight2.png");
-  font-family: "Gill Sans", sans-serif;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   color: white;
 }
 
 #unsupported { border: 1px solid yellow; color: black; background-color: #FFFFAD; padding: 2em; margin: 1em; display: inline-block; }
 
-#sidebar                        { width: 18em; height: 40em; float: left; font-size: 0.825em; background-color: #333; border: 1px solid white; padding: 1em;  }
-#sidebar h2                     { color: white; text-align: center; margin: 0; }
-#sidebar .parts                 { padding-left: 1em; list-style-type: none; margin-bottom: 2em; text-align: right; }
-#sidebar .parts li a            { color: white; text-decoration: none; }
-#sidebar .parts li a:visited    { color: white; }
-#sidebar .parts li a:hover      { color: white; text-decoration: underline; }
-#sidebar .parts li a.selected   { color: #F08010; }
-#sidebar .parts li a i          { color: #AAA;    }
-#sidebar .parts li a.selected i { color: #F08010; }
-#sidebar .settings              { line-height: 1.2em; height: 1.2em; text-align: right; }
-#sidebar .settings.size         { }
-#sidebar .settings.speed        { margin-bottom: 1em; }
-#sidebar .settings label        { vertical-align: middle; }
-#sidebar .settings input        { vertical-align: middle; }
-#sidebar .settings select       { vertical-align: middle; }
-#sidebar .description           { margin-bottom: 2em; }
-#sidebar .description b         { font-weight: normal; color: #FFF; }
-
 header {
-  margin: 0em 0 0em 0 ;
-  display: flex;
-  /* flex-direction: column; */
+  margin: 0;
   justify-content: space-between;
-  align-items: center; /* Center items vertically */
-  /* align-content: space-around; */
+  align-items: center; 
   width: 100%;
   height: 80px; 
 
@@ -49,14 +23,7 @@ button {
   border-radius: 10%;
 }
 
-h1 {
-  text-align: center;
-  background-color: rgba(60, 42, 110, 0.9);
-  border-radius: 1em;
-  max-width: 50%; 
-  height: 1em;
-  width: 1000px;
-}
+h1 { background: radial-gradient(circle, rgb(70, 47, 107), rgb(11, 2, 90)); }
 
 p {
   font-size: smaller;
@@ -85,8 +52,9 @@ p {
   margin-top: 0.5em;
 }
 
-#modeSelections :nth-child(2) {
-  margin: 0 1em 0 1em
+#twoplayer {
+  margin: 2em 1em 0 1em;
+  height: 46px;
 }
 
 #controls, #backArrow {
@@ -94,6 +62,8 @@ p {
 }
 
 @media screen and (min-width: 0px) {
+  body { overflow: hidden; }
+  footer { position: absolute; }
   #game    { display: block; width: 480px; height: 360px; margin: 0 auto; }
   #options { margin-top: 3.5em; }
 }
